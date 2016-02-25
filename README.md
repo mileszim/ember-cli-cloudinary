@@ -17,6 +17,20 @@ cloudinary: {
 
 ## Components ##
 
+### cloudinary-image ###
+
+This component will render an <img> built from a cloudinary url and options.
+
+```javascript
+{{cloudinary-image 'imageId' (hash width=100)}}
+```
+
+Width and height attributes are set on the img tag as well as passed to cloudinary, allowing you to specify the resolution via the "dpr" attribute.
+
+```javascript
+{{cloudinary-image 'imageId' (hash width=100 height=100 dpr="2.0")}}
+```
+
 ### cloudinary-direct-upload ###
 
 This component will sign and upload a file directly to Cloudinary from the browser. After a successful upload it will pass the signed response to your server.
