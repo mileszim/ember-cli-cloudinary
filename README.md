@@ -31,12 +31,12 @@ Width and height attributes are set on the img tag as well as passed to cloudina
 {{cloudinary-image 'imageId' (hash width=100 height=100 dpr="2.0")}}
 ```
 
-### cloudinary-direct-upload ###
+### cloudinary-direct-file ###
 
 This component will sign and upload a file directly to Cloudinary from the browser. After a successful upload it will pass the signed response to your server.
 
 ```javascript
-{{cloudinary-direct-upload ...}}
+{{cloudinary-direct-file ...}}
 ```
 
 
