@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import layout from '../templates/components/cloudinary-image';
 
 const CloudinaryImageComponent = Ember.Component.extend({
   tagName: 'img',
