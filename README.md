@@ -1,6 +1,6 @@
-# Ember-cli-cloudinary
+# ember-cli-cloudinary #
 
-This README outlines the details of collaborating on this Ember addon.
+Ember addon for Cloudinary
 
 ## Installation
 

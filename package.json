@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-cloudinary",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Ember addon for Cloudinary",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -15,7 +15,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Miles Zimmerman <miles@maztek.io>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
@@ -40,7 +40,10 @@
     "loader.js": "^4.0.0"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "cloudinary",
+    "images",
+    "ember"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5"
