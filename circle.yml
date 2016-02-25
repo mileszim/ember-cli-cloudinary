@@ -1,0 +1,12 @@
+machine:
+  node:
+    version: 5.6.0
+dependencies:
+  pre:
+    - npm install -g bower
+  override:
+    - npm install
+    - bower install
+test:
+  override:
+    - npm test -- --launch="Chrome,Firefox,PhantomJS"
