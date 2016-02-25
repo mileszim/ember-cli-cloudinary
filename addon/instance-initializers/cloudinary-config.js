@@ -4,7 +4,7 @@ export function initialize(appInstance) {
   const ENV = appInstance.resolveRegistration('config:environment');
 
   if (!ENV.cloudinary || !ENV.cloudinary.apiKey || !ENV.cloudinary.cloudName) {
-    console.error('Please specify your cloudinary.cloudName and cloudinary.apiKey in your config.');
+    Ember.Logger.error('Please specify your cloudinary.cloudName and cloudinary.apiKey in your config.');
     return;
   }
 

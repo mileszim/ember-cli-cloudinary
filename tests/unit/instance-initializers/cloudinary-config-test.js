@@ -15,9 +15,6 @@ module('Unit | Instance Initializer | cloudinary config', {
     Ember.run(() => {
       this.application = Ember.Application.create();
       this.appInstance = this.application.buildInstance();
-
-      // Register config
-      this.appInstance.register('config:environment', config);
     });
   },
   afterEach: function() {
@@ -28,7 +25,21 @@ module('Unit | Instance Initializer | cloudinary config', {
 
 
 test('it configures cloudinary', function(assert) {
+  this.appInstance.register('config:environment', config);
   initialize(this.appInstance);
 
   assert.deepEqual(Ember.$.cloudinary.config(), { api_key: "12345", cloud_name: "cloud-name", secure: true });
+});
+
+
+test('it throws an error if cloudinary options not in ENV', function(assert) {
+  assert.expect(1);
+
+  this.appInstance.register('config:environment', {});
+
+  Ember.Logger.error = function(msg) {
+    assert.equal(msg, 'Please specify your cloudinary.cloudName and cloudinary.apiKey in your config.');
+  };
+
+  initialize(this.appInstance);
 });
