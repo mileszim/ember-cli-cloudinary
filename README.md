@@ -2,25 +2,32 @@
 
 Ember addon for Cloudinary
 
-## Installation
+## Installation ##
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+```ember install ember-cli-cloudinary```
 
-## Running
+Add your cloud name & api key to config/environment.js ENV:
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+```javascript
+cloudinary: {
+  cloudName: 'some_cloud_name',
+  apiKey: 'some_api_key'
+},
+```
 
-## Running Tests
+## Components ##
+
+### cloudinary-direct-upload ###
+
+This component will sign and upload a file directly to Cloudinary from the browser. After a successful upload it will pass the signed response to your server.
+
+```javascript
+{{cloudinary-direct-upload ...}}
+```
+
+
+## Running Tests ##
 
 * `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
