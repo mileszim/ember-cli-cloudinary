@@ -32,22 +32,49 @@ export default Ember.Component.extend({
     }
 
     Ember.$.get(this.get('signatureEndpoint'), { timestamp: Date.now() / 1000 }).done((response) => {
-      this.set('data-form-data', JSON.stringify(response));
+      Ember.run(() => { this.set('data-form-data', JSON.stringify(response)); });
     });
   },
 
-  // Bind
+  didSetData: Ember.observer('data-form-data', function() {
+    Ember.run.next(this, function() {
+      this.$().cloudinary_fileupload({
+        disableImageResize: this.get('disableImageResize'),
+        imageMaxWidth:      this.get('imageMaxWidth'),
+        imageMaxHeight:     this.get('imageMaxHeight'),
+        acceptFileTypes:    this.get('acceptFileTypes'),
+        maxFileSize:        this.get('maxFileSize')
+      });
+    });
+  }),
+
   didInsertElement() {
-    this.$().cloudinary_fileupload({
-      disableImageResize: this.get('disableImageResize'),
-      imageMaxWidth:      this.get('imageMaxWidth'),
-      imageMaxHeight:     this.get('imageMaxHeight'),
-      acceptFileTypes:    this.get('acceptFileTypes'),
-      maxFileSize:        this.get('maxFileSize')
+    this.$().bind('cloudinarydone', (e, data) => {
+      this.sendAction('onUploadDone', e, data);
     });
 
-    this.$().bind('fileuploaddone', (e, data) => {
-      this.sendAction('onFileUploadDone', e, data);
+    this.$().bind('cloudinaryprogress', (e, data) => {
+      this.sendAction('fileProgress', e, data);
+    });
+
+    this.$().bind('cloudinaryprogressall', (e, data) => {
+      this.sendAction('allFileProgress', e, data);
+    });
+
+    this.$().bind('cloudinarystart', (e, data) => {
+      this.sendAction('onUploadStart', e, data);
+    });
+
+    this.$().bind('cloudinarystop', (e, data) => {
+      this.sendAction('onUploadStop', e, data);
+    });
+
+    this.$().bind('cloudinaryfail', (e, data) => {
+      this.sendAction('onUploadFail', e, data);
+    });
+
+    this.$().bind('cloudinaryalways', (e, data) => {
+      this.sendAction('onUploadAlways', e, data);
     });
   }
 });
