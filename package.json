@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-cloudinary",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ember addon for Cloudinary",
   "directories": {
     "doc": "doc",
@@ -17,6 +17,8 @@
   },
   "author": "Miles Zimmerman <miles@maztek.io>",
   "license": "MIT",
+  "bugs": "https://github.com/hiwhi/ember-cli-cloudinary/issues",
+  "repository": "hiwhi/ember-cli-cloudinary",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
     "ember-ajax": "0.7.1",
