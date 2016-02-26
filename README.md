@@ -36,7 +36,15 @@ Width and height attributes are set on the img tag as well as passed to cloudina
 This component will sign and upload a file directly to Cloudinary from the browser. After a successful upload it will pass the signed response to your server.
 
 ```javascript
-{{cloudinary-direct-file ...}}
+{{cloudinary-direct-file signatureEndpoint='/sign_upload'}}
+```
+
+Set *signatureEndpoint* to the API endpoint that signs your cloudinary direct upload requests.
+
+You can also set an action when the file is done uploading:
+
+```javascript
+{{cloudinary-direct-file signatureEndpoint='/sign_upload' onFileUploadDone=(action 'showThumbnail')}}
 ```
 
 
