@@ -1,5 +1,7 @@
 /*jshint node:true*/
 module.exports = {
+  normalizeEntityName: function() {}, // no-op since we're just adding dependencies
+  
   description: 'ember-cli-cloudinary blueprint',
 
   afterInstall: function() {
