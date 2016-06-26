@@ -1,5 +1,5 @@
 /*global Ember */
-//import Ember from 'ember';
+import Ember from 'ember';
 export default {
   name: 'cloudinary-config',
   initialize: initialize
