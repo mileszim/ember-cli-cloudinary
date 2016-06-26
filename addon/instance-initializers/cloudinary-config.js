@@ -1,4 +1,9 @@
-import Ember from 'ember';
+/*global Ember */
+//import Ember from 'ember';
+export default {
+  name: 'cloudinary-config',
+  initialize: initialize
+};
 
 export function initialize(appInstance) {
   const ENV = appInstance.resolveRegistration('config:environment');
@@ -8,14 +13,10 @@ export function initialize(appInstance) {
     return;
   }
 
+
   Ember.$.cloudinary.config({
     cloud_name: ENV.cloudinary.cloudName,
     api_key:    ENV.cloudinary.apiKey,
     secure:     true
   });
 }
-
-export default {
-  name: 'cloudinary-config',
-  initialize: initialize
-};
