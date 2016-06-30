@@ -7,6 +7,6 @@
     "ember-qunit-notifications": "0.1.0"
   },
   "devDependencies": {
-    "cloudinary-jquery-file-upload": "^2.0.6"
+    "cloudinary-jquery-file-upload": "^2.1.1"
   }
 }
