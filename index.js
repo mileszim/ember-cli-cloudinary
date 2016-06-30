@@ -15,7 +15,7 @@ module.exports = {
     app.import(path.join(blueimpFileUploadPath, 'js/jquery.iframe-transport.js'));
     app.import(path.join(blueimpFileUploadPath, 'js/jquery.fileupload.js'));
     app.import(app.bowerDirectory + '/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js');
-    //app.import(path.join(blueimpLoadImagePath,           'js/load-image.all.min.js'));
+    app.import(path.join(blueimpLoadImagePath,           'js/load-image.all.min.js'));
     //app.import(path.join(blueimpblueimpCanvasToBlobPath, 'js/canvas-to-blob.min.js'));
     app.import(path.join(blueimpFileUploadPath,          'js/jquery.fileupload-process.js'));
     app.import(path.join(blueimpFileUploadPath,          'js/jquery.fileupload-image.js'));
