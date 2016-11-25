@@ -28,7 +28,7 @@ test('it configures cloudinary', function(assert) {
   this.appInstance.register('config:environment', config);
   initialize(this.appInstance);
 
-  assert.deepEqual(Ember.$.cloudinary.config(), { api_key: "12345", cloud_name: "cloud-name", secure: true });
+  assert.deepEqual(Ember.$.cloudinary.config(), { api_key: "12345", cloud_name: "cloud-name", secure: true, responsive_class: "cld-responsive", responsive_use_breakpoints: true, round_dpr: true });
 });
 
 
