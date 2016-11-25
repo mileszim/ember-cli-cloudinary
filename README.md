@@ -50,7 +50,7 @@ You can also set an action when the file is done uploading:
 
 ### cloudinary-video ###
 
-This component will render <video><source></video> tags generated from a cloudinary video and options.
+This component will render &lt;video&gt;&lt;source&gt;&lt;/video&gt; tags generated from a cloudinary video and options.
 
 ```javascript
 {{cloudinary-video 'videoId' (hash width=100)}}
