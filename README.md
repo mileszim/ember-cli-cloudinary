@@ -48,6 +48,21 @@ You can also set an action when the file is done uploading:
 ```
 
 
+### cloudinary-video ###
+
+This component will render <video><source></video> tags generated from a cloudinary video and options.
+
+```javascript
+{{cloudinary-video 'videoId' (hash width=100)}}
+```
+
+There is an extra 'matchWidth' option that will resize the video to the width of the component.
+
+```javascript
+{{cloudinary-video 'videoId' (hash controls=true matchWidth=true)}}
+```
+
+
 ## Running Tests ##
 
 * `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
