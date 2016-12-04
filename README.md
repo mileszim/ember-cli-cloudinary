@@ -44,7 +44,7 @@ Set *signatureEndpoint* to the API endpoint that signs your cloudinary direct up
 You can also set an action when the file is done uploading:
 
 ```javascript
-{{cloudinary-direct-file signatureEndpoint='/sign_upload' onFileUploadDone=(action 'showThumbnail')}}
+{{cloudinary-direct-file signatureEndpoint='/sign_upload' onUploadDone=(action 'showThumbnail')}}
 ```
 
 
