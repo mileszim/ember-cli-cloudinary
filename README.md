@@ -19,7 +19,7 @@ cloudinary: {
 
 ### cloudinary-image ###
 
-This component will render an <img> built from a cloudinary url and options.
+This component will render an `<img>` built from a cloudinary url and options.
 
 ```javascript
 {{cloudinary-image 'imageId' (hash width=100)}}
