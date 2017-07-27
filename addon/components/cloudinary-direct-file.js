@@ -4,51 +4,64 @@ export default Ember.Component.extend({
   tagName: 'input',
   classNames: ['cloudinary-fileupload'],
 
-  attributeBindings: ['name', 'type', 'data-cloudinary-field', 'data-form-data', 'multiple'],
+  attributeBindings: ['name', 'type', 'data-cloudinary-field', 'data-form-data','style','accept'],
 
   // Attributes
   name: 'file',
   type: 'file',
-  multiple: true,
+  accept:'image/jpeg,image/gif,image/png',
+  //multiple: false,
   fieldName: null,
   'data-cloudinary-field': Ember.computed.alias('fieldName'),
+  style:Ember.String.htmlSafe(""),
 
   // Endpoint
   signatureEndpoint: null,
-
+  
   // Default Options
+  autoUpload: true,                            // default is true
   disableImageResize: false,
-  imageMaxWidth: 10000000,
-  imageMaxHeight: 10000000,
+  imageMaxWidth: 800,
+  imageMaxHeight: 600,
+  maxFileSize: 5000000,
+  loadImageMaxFileSize: 5000000,               // default is 10MB
   acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
-  maxFileSize: 50000000,
-
+  
   // Fetch signature
   init() {
     this._super(...arguments);
-
+    
     if (!this.get('signatureEndpoint')) {
       Ember.Logger.error('`signatureEndpoint` parameter must be specified on cloudinary-direct-file component.');
     }
-
     Ember.$.get(this.get('signatureEndpoint'), { timestamp: Date.now() / 1000 }).done((response) => {
       Ember.run(() => { this.set('data-form-data', JSON.stringify(response)); });
     });
   },
 
   didSetData: Ember.observer('data-form-data', function() {
-    Ember.run.next(this, function() {
-      this.$().cloudinary_fileupload({
-        disableImageResize: this.get('disableImageResize'),
-        imageMaxWidth:      this.get('imageMaxWidth'),
-        imageMaxHeight:     this.get('imageMaxHeight'),
-        acceptFileTypes:    this.get('acceptFileTypes'),
-        maxFileSize:        this.get('maxFileSize')
+    var self = this;
+    Ember.run.next(function() {
+      self.$().cloudinary_fileupload({
+        autoUpload:           self.get('autoUpload:'),
+        disableImageResize:   self.get('disableImageResize'),
+        imageMaxWidth:        self.get('imageMaxWidth'),
+        imageMaxHeight:       self.get('imageMaxHeight'),
+        maxFileSize:          self.get('maxFileSize'), 
+        loadImageMaxFileSize: self.get('loadImageMaxFileSize'),
+        acceptFileTypes:      self.get('acceptFileTypes'),
       });
     });
   }),
 
   didInsertElement() {
+    // consalt the jQuery File Upload for more evant 
+    //https://github.com/blueimp/jQuery-File-Upload/wiki/Options
+
+    this.$().bind('fileuploadprocessfail', (e, data) => {
+      this.sendAction('onprocessfail', e, data);
+    });    
+    
     this.$().bind('cloudinarydone', (e, data) => {
       this.sendAction('onUploadDone', e, data);
     });
