@@ -4,14 +4,16 @@ export default Ember.Component.extend({
   tagName: 'input',
   classNames: ['cloudinary-fileupload'],
 
-  attributeBindings: ['name', 'type', 'data-cloudinary-field', 'data-form-data', 'multiple'],
+  attributeBindings: ['name', 'type', 'data-cloudinary-field', 'data-form-data', 'multiple', 'style', 'accept'],
 
   // Attributes
   name: 'file',
   type: 'file',
-  multiple: true,
+  multiple: false,
   fieldName: null,
   'data-cloudinary-field': Ember.computed.alias('fieldName'),
+  accept: 'image/jpeg,image/gif,image/png',
+  style: Ember.String.htmlSafe(""),
 
   // Endpoint
   signatureEndpoint: null,
@@ -22,6 +24,7 @@ export default Ember.Component.extend({
   imageMaxHeight: 10000000,
   acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i,
   maxFileSize: 50000000,
+  loadImageMaxFileSize: 50000000,
 
   // Fetch signature
   init() {
@@ -43,7 +46,8 @@ export default Ember.Component.extend({
         imageMaxWidth:      this.get('imageMaxWidth'),
         imageMaxHeight:     this.get('imageMaxHeight'),
         acceptFileTypes:    this.get('acceptFileTypes'),
-        maxFileSize:        this.get('maxFileSize')
+        maxFileSize:        this.get('maxFileSize'),
+        loadImageMaxFileSize: this.get('loadImageMaxFileSize')
       });
     });
   }),
@@ -69,7 +73,7 @@ export default Ember.Component.extend({
       this.sendAction('onUploadStop', e, data);
     });
 
-    this.$().bind('cloudinaryfail', (e, data) => {
+    this.$().bind('fileuploadprocessfail', (e, data) => {
       this.sendAction('onUploadFail', e, data);
     });
 
