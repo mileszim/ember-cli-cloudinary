@@ -73,6 +73,10 @@ export default Ember.Component.extend({
       this.sendAction('onUploadStop', e, data);
     });
 
+    this.$().bind('cloudinaryfail', (e, data) => {
+      this.sendAction('onUploadFail', e, data);
+    });
+
     this.$().bind('fileuploadprocessfail', (e, data) => {
       this.sendAction('onUploadFail', e, data);
     });
