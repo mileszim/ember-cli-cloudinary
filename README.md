@@ -41,12 +41,37 @@ This component will sign and upload a file directly to Cloudinary from the brows
 
 Set *signatureEndpoint* to the API endpoint that signs your cloudinary direct upload requests.
 
-You can also set an action when the file is done uploading:
+You can also set an action for different events. For example when the file is done uploading:
 
 ```javascript
 {{cloudinary-direct-file signatureEndpoint='/sign_upload' onUploadDone=(action 'showThumbnail')}}
 ```
 
+#### Options
+option | default  | Info
+------ | ---- |  ----
+name | 'file' |  Name of the input
+multiple | false | True if you want to upload more than one file
+accept | 'image/jpeg,image/gif,image/png' | Files types allowed in the input type file
+style | Ember.String.htmlSafe("") | Component style
+signatureEndpoint | null | Signs your cloudinary direct upload requests
+disableImageResize | null | -
+imageMaxWidth | 10000000 | Image max width
+imageMaxHeight | 10000000 | Image max height
+acceptFileTypes | [Regex with image extensions] | Files extension allowed (checked by code)
+maxFileSize | 50000000 | Max File Size
+loadImageMaxFileSize | 50000000 | Load Image Max File Size
+
+#### Events
+Event | Info
+------ | ---- 
+onUploadDone | File uploaded
+fileProgress | File progress
+allFileProgress | More than one file progress
+onUploadStart | Upload Starts
+onUploadStop | Upload Stops
+onUploadFail | Upload Fails
+onUploadAlways | Upload Always
 
 ## Running Tests ##
 
