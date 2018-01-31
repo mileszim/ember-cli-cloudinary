@@ -61,10 +61,11 @@ imageMaxHeight | 10000000 | Image max height
 acceptFileTypes | [Regex with image extensions] | Files extension allowed (checked by code)
 maxFileSize | 50000000 | Max File Size
 loadImageMaxFileSize | 50000000 | Load Image Max File Size
+maxChunkSize | null | Required for chunked upload of bigger files
 
 #### Events
 Event | Info
------- | ---- 
+------ | ----
 onUploadDone | File uploaded
 fileProgress | File progress
 allFileProgress | More than one file progress
